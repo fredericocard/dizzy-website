@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dizzy - Delete Account</title>
+  <link rel="icon" type="image/png" href="icon-512.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Nunito', sans-serif; color: #333; background: #F8FAFB; line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
+    .header {
+      background: linear-gradient(150deg, #1a3d5c 0%, #2E5E8B 40%, #4A90C4 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .header img { width: 80px; height: 80px; border-radius: 20px; margin-bottom: 12px; }
+    .header h1 { font-size: 28px; font-weight: 800; }
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      flex: 1;
+    }
+    h2 { color: #1a3d5c; font-size: 22px; margin: 28px 0 12px; }
+    p { margin-bottom: 16px; }
+    .steps {
+      background: #EDF4FA;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .steps ol { padding-left: 20px; }
+    .steps li { margin-bottom: 10px; }
+    .email-link { color: #2E5E8B; font-weight: 700; text-decoration: none; }
+    .email-link:hover { text-decoration: underline; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .data-table th { background: #2E5E8B; color: white; padding: 12px 16px; text-align: left; font-weight: 700; }
+    .data-table td { padding: 10px 16px; border-bottom: 1px solid #E8F0F8; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) { background: #F4F8FC; }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #8098AB;
+      font-size: 13px;
+      border-top: 1px solid #E8F0F8;
+    }
+    .footer a { color: #2E5E8B; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icon-512.png" alt="Dizzy logo">
+    <h1>Delete Your Account</h1>
+  </div>
+
+  <div class="content">
+    <h2>How to request account deletion</h2>
+    <p>If you would like to delete your Dizzy account and all associated data, you can do so using one of the following methods:</p>
+
+    <div class="steps">
+      <ol>
+        <li><strong>In-app:</strong> Open Dizzy, go to <strong>Settings</strong> &gt; <strong>Account</strong> &gt; <strong>Delete Account</strong>, and confirm the deletion.</li>
+        <li><strong>By email:</strong> Send an email to <a class="email-link" href="mailto:info@dizzy-app.com">info@dizzy-app.com</a> with the subject line <strong>"Delete My Account"</strong>. Include the email address associated with your Dizzy account.</li>
+      </ol>
+    </div>
+
+    <h2>What data is deleted</h2>
+    <p>When your account is deleted, the following data is permanently removed from our servers:</p>
+
+    <table class="data-table">
+      <tr>
+        <th>Data type</th>
+        <th>Action</th>
+        <th>Timeframe</th>
+      </tr>
+      <tr>
+        <td>Account information (email, name)</td>
+        <td>Deleted</td>
+        <td>Immediately</td>
+      </tr>
+      <tr>
+        <td>Saved styles and preferences</td>
+        <td>Deleted</td>
+        <td>Immediately</td>
+      </tr>
+      <tr>
+        <td>Subscription data</td>
+        <td>Deleted</td>
+        <td>Immediately</td>
+      </tr>
+      <tr>
+        <td>Anonymous analytics data</td>
+        <td>Auto-deleted</td>
+        <td>Within 60 days</td>
+      </tr>
+    </table>
+
+    <h2>Processing time</h2>
+    <p>Email requests are processed within 30 days. You will receive a confirmation email once your account and data have been deleted.</p>
+
+    <h2>Important notes</h2>
+    <p>Deleting your account will cancel any active subscriptions. You will lose access to all saved styles and preferences. This action cannot be undone.</p>
+    <p>If you have questions, contact us at <a class="email-link" href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>.</p>
+  </div>
+
+  <div class="footer">
+    <a href="https://dizzy-app.com">Back to Dizzy</a> &nbsp;|&nbsp; &copy; 2026 Dizzy
+  </div>
+</body>
+</html>
