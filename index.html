@@ -78,33 +78,6 @@
       margin: 0 auto 44px; line-height: 1.85;
     }
 
-    /* ── Features grid ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 44px;
-      max-width: 760px;
-      width: 100%;
-    }
-    .pill {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 14px;
-      padding: 18px 20px;
-      font-size: 15px; font-weight: 700;
-      letter-spacing: 0.3px;
-      color: rgba(255,255,255,0.95);
-      text-align: center;
-    }
-    .pill small {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      opacity: 0.7;
-      margin-top: 6px;
-      line-height: 1.5;
-    }
 
     /* ── Play button ── */
     .play-btn {
@@ -376,8 +349,6 @@
       .hero h1 { font-size: 40px; letter-spacing: 2px; }
       .hero .tagline { font-size: 17px; }
       .hero-logo { width: 110px; height: 110px; border-radius: 24px; }
-      .pill { font-size: 12px; padding: 12px 14px; }
-      .features-grid { grid-template-columns: 1fr; max-width: 340px; }
       .play-btn { padding: 12px 24px; font-size: 14px; }
       .modal { padding: 28px 20px; margin: 16px; }
       .lang-toggle { top: 10px; right: 10px; }
@@ -399,14 +370,6 @@
       <h1>Dizzy</h1>
       <p class="tagline" data-en="Your portable speech therapist" data-pt="O teu terapeuta da fala portátil"></p>
       <p class="description" data-en="Enter or import any text, split it into syllables instantly, customize colors and styles, and practice reading with guided tools. Designed for learners, teachers, and parents." data-pt="Escreve ou importa qualquer texto, divide-o em sílabas instantaneamente, personaliza cores e estilos, e pratica a leitura com ferramentas guiadas. Feito para alunos, professores e pais."></p>
-      <div class="features-grid">
-        <span class="pill"><span data-en="Syllable Splitting" data-pt="Divisão Silábica"></span><small data-en="Effortlessly break text into syllables for clearer, easier reading, no matter the language." data-pt="Divide o texto em sílabas de forma simples para uma leitura mais clara e fácil, em qualquer língua."></small></span>
-        <span class="pill"><span data-en="Custom Styles" data-pt="Estilos Personalizados"></span><small data-en="Adjust colors, add syllable or word boxes, choose separators, and highlight specific letters to make the text feel just right for you." data-pt="Ajusta cores, adiciona caixas por sílaba ou palavra, escolhe separadores e destaca letras específicas para que o texto fique perfeito para ti."></small></span>
-        <span class="pill"><span data-en="Guided Reading" data-pt="Leitura Guiada"></span><small data-en="Follow the text syllable by syllable at your own pace, so you can read smoothly and confidently." data-pt="Segue o texto sílaba a sílaba ao teu ritmo, para leres de forma fluida e com confiança."></small></span>
-        <span class="pill"><span data-en="Scan & Import" data-pt="Digitalizar e Importar"></span><small data-en="Take a photo of a book, scan documents or images, and instantly convert them into editable text for syllable splitting." data-pt="Tira uma foto de um livro, digitaliza documentos ou imagens, e converte-os instantaneamente em texto editável para dividir em sílabas."></small></span>
-        <span class="pill"><span data-en="Speech to Text" data-pt="Voz para Texto"></span><small data-en="Turn your voice into text on the spot, then break it down into syllables for easy reading." data-pt="Transforma a tua voz em texto na hora e divide-o em sílabas para uma leitura fácil."></small></span>
-        <span class="pill"><span data-en="Save & Share" data-pt="Guardar e Partilhar"></span><small data-en="Save your syllable-split text, ready to print for study sessions or share anywhere you need." data-pt="Guarda o teu texto dividido em sílabas, pronto a imprimir para sessões de estudo ou partilhar onde precisares."></small></span>
-      </div>
       <a href="#" class="play-btn">
         <svg viewBox="0 0 24 24" fill="none"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15C4.34 1.9 4.93 1.97 5.35 2.35L21.04 11.35C21.39 11.58 21.6 11.97 21.6 12.4C21.6 12.83 21.39 13.22 21.04 13.45L5.35 22.45C4.93 22.83 4.34 22.9 3.84 22.65C3.34 22.41 3 21.89 3 21.3V20.5Z" fill="#2E5E8B"/></svg>
         <span data-en="Get it on Google Play" data-pt="Disponível no Google Play"></span>
@@ -423,12 +386,12 @@
       <button class="gallery-arrow left" onclick="galleryPrev()">&#8249;</button>
       <div class="gallery-viewport">
         <div class="gallery-track" id="gallery-track">
-          <div class="gallery-card" data-desc-en="Text for image 1" data-desc-pt="Texto para imagem 1" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
-          <div class="gallery-card" data-desc-en="Text for image 2" data-desc-pt="Texto para imagem 2" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
-          <div class="gallery-card" data-desc-en="Text for image 3" data-desc-pt="Texto para imagem 3" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
-          <div class="gallery-card" data-desc-en="Text for image 4" data-desc-pt="Texto para imagem 4" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
-          <div class="gallery-card" data-desc-en="Text for image 5" data-desc-pt="Texto para imagem 5" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
-          <div class="gallery-card" data-desc-en="Text for image 6" data-desc-pt="Texto para imagem 6" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
+          <div class="gallery-card" data-desc-en="Effortlessly break text into syllables for clearer, easier reading, no matter the language." data-desc-pt="Divide o texto em sílabas de forma simples para uma leitura mais clara e fácil, em qualquer língua." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
+          <div class="gallery-card" data-desc-en="Adjust colors, add syllable or word boxes, choose separators, and highlight specific letters to make the text feel just right for you." data-desc-pt="Ajusta cores, adiciona caixas por sílaba ou palavra, escolhe separadores e destaca letras específicas para que o texto fique perfeito para ti." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
+          <div class="gallery-card" data-desc-en="Follow the text syllable by syllable at your own pace, so you can read smoothly and confidently." data-desc-pt="Segue o texto sílaba a sílaba ao teu ritmo, para leres de forma fluida e com confiança." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
+          <div class="gallery-card" data-desc-en="Take a photo of a book, scan documents or images, and instantly convert them into editable text for syllable splitting." data-desc-pt="Tira uma foto de um livro, digitaliza documentos ou imagens, e converte-os instantaneamente em texto editável para dividir em sílabas." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
+          <div class="gallery-card" data-desc-en="Turn your voice into text on the spot, then break it down into syllables for easy reading." data-desc-pt="Transforma a tua voz em texto na hora e divide-o em sílabas para uma leitura fácil." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
+          <div class="gallery-card" data-desc-en="Save your syllable-split text, ready to print for study sessions or share anywhere you need." data-desc-pt="Guarda o teu texto dividido em sílabas, pronto a imprimir para sessões de estudo ou partilhar onde precisares." onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
         </div>
       </div>
       <button class="gallery-arrow right" onclick="galleryNext()">&#8250;</button>
@@ -744,11 +707,13 @@
       });
     })();
 
-    // Scroll wheel on gallery
+    // Scroll wheel on gallery — only intercept horizontal scroll
     document.querySelector('.gallery-viewport').addEventListener('wheel', function(e) {
-      e.preventDefault();
-      if (e.deltaY > 0 || e.deltaX > 0) galleryNext();
-      else galleryPrev();
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        if (e.deltaX > 0) galleryNext();
+        else galleryPrev();
+      }
     }, { passive: false });
   </script>
 
