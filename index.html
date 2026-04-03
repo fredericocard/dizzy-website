@@ -247,15 +247,19 @@
     .lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
     @media (max-width: 600px) {
-      .gallery-wrap { padding: 0 42px; }
-      .gallery-viewport { height: 340px; }
-      .gallery-arrow { width: 34px; height: 34px; font-size: 16px; }
-      .gallery-arrow.left { left: 4px; }
-      .gallery-arrow.right { right: 4px; }
-      .gallery-card img { height: 240px; }
-      .gallery-card.active img { height: 300px; }
-      .gallery-desc { height: 90px; }
-      .gallery-desc p { font-size: 12px; max-width: 180px; }
+      .gallery-section { padding: 32px 0 28px; }
+      .gallery-wrap { padding: 0 36px; }
+      .gallery-viewport { height: 360px; }
+      .gallery-arrow { width: 30px; height: 30px; font-size: 14px; }
+      .gallery-arrow.left { left: 2px; }
+      .gallery-arrow.right { right: 2px; }
+      /* Mobile: center card takes 60%, side cards 20% each */
+      .gallery-card { width: 60%; padding: 0 4px; }
+      .gallery-card img { height: 200px; opacity: 0.3; }
+      .gallery-card.active img { height: 320px; opacity: 1; }
+      /* Shift track differently on mobile — JS handles via class */
+      .gallery-desc { height: 80px; padding: 10px 0 0; }
+      .gallery-desc p { font-size: 13px; width: 80%; max-width: 280px; }
     }
 
     /* ── Contact section ── */
@@ -626,8 +630,12 @@
       galleryIndex = idx;
 
       var track = document.getElementById('gallery-track');
-      // Shift so that card[idx] sits in the center (2nd of 3 visible slots)
-      var offset = (idx - 1) * 33.333;
+      // On mobile (<=600px) cards are 60% wide, on desktop 33.333%
+      var isMobile = window.innerWidth <= 600;
+      var cardWidth = isMobile ? 60 : 33.333;
+      // Center the active card: shift by (idx * cardWidth) then add offset to center it
+      var centerOffset = isMobile ? 20 : 33.333;
+      var offset = idx * cardWidth - centerOffset;
       track.style.transform = 'translateX(' + (-offset) + '%)';
 
       // Active state
@@ -676,6 +684,9 @@
       }
       galleryGo(1); // start with image 2 centered
     })();
+
+    // Recalculate on resize (e.g. rotation)
+    window.addEventListener('resize', function() { galleryGo(galleryIndex); });
 
     // Swipe support
     (function() {
