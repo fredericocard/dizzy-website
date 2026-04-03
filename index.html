@@ -13,6 +13,35 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Nunito', sans-serif; color: #333; background: #F8FAFB; line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
 
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+    .lang-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.95);
+      color: #2E5E8B;
+    }
+
     /* ── Hero / Landing ── */
     .hero {
       flex: 1;
@@ -178,52 +207,56 @@
       .features-grid { grid-template-columns: 1fr; max-width: 340px; }
       .play-btn { padding: 12px 24px; font-size: 14px; }
       .modal { padding: 28px 20px; margin: 16px; }
+      .lang-toggle { top: 10px; right: 10px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">PT</button>
+  </div>
 
   <!-- Hero / Landing -->
   <div class="hero">
     <div class="hero-content">
       <img src="icon-512.png" alt="Dizzy App Logo" class="hero-logo">
       <h1>Dizzy</h1>
-      <p class="tagline">Your portable speech therapist</p>
-      <p class="description">
-        Enter or import any text, split it into syllables instantly, customize colors and styles,
-        and practice reading with guided tools. Designed for learners, teachers, and parents.
-      </p>
+      <p class="tagline" data-en="Your portable speech therapist" data-pt="O teu terapeuta da fala portátil"></p>
+      <p class="description" data-en="Enter or import any text, split it into syllables instantly, customize colors and styles, and practice reading with guided tools. Designed for learners, teachers, and parents." data-pt="Escreve ou importa qualquer texto, divide-o em sílabas instantaneamente, personaliza cores e estilos, e pratica a leitura com ferramentas guiadas. Feito para alunos, professores e pais."></p>
       <div class="features-grid">
-        <span class="pill">Syllable Splitting<small>Effortlessly break text into syllables for clearer, easier reading, no matter the language.</small></span>
-        <span class="pill">Custom Styles<small>Adjust colors, add syllable or word boxes, choose separators, and highlight specific letters to make the text feel just right for you.</small></span>
-        <span class="pill">Guided Reading<small>Follow the text syllable by syllable at your own pace, so you can read smoothly and confidently.</small></span>
-        <span class="pill">Scan &amp; Import<small>Take a photo of a book, scan documents or images, and instantly convert them into editable text for syllable splitting.</small></span>
-        <span class="pill">Speech to Text<small>Turn your voice into text on the spot, then break it down into syllables for easy reading.</small></span>
-        <span class="pill">Save &amp; Share<small>Save your syllable-split text, ready to print for study sessions or share anywhere you need.</small></span>
+        <span class="pill"><span data-en="Syllable Splitting" data-pt="Divisão Silábica"></span><small data-en="Effortlessly break text into syllables for clearer, easier reading, no matter the language." data-pt="Divide o texto em sílabas de forma simples para uma leitura mais clara e fácil, em qualquer língua."></small></span>
+        <span class="pill"><span data-en="Custom Styles" data-pt="Estilos Personalizados"></span><small data-en="Adjust colors, add syllable or word boxes, choose separators, and highlight specific letters to make the text feel just right for you." data-pt="Ajusta cores, adiciona caixas por sílaba ou palavra, escolhe separadores e destaca letras específicas para que o texto fique perfeito para ti."></small></span>
+        <span class="pill"><span data-en="Guided Reading" data-pt="Leitura Guiada"></span><small data-en="Follow the text syllable by syllable at your own pace, so you can read smoothly and confidently." data-pt="Segue o texto sílaba a sílaba ao teu ritmo, para leres de forma fluida e com confiança."></small></span>
+        <span class="pill"><span data-en="Scan & Import" data-pt="Digitalizar e Importar"></span><small data-en="Take a photo of a book, scan documents or images, and instantly convert them into editable text for syllable splitting." data-pt="Tira uma foto de um livro, digitaliza documentos ou imagens, e converte-os instantaneamente em texto editável para dividir em sílabas."></small></span>
+        <span class="pill"><span data-en="Speech to Text" data-pt="Voz para Texto"></span><small data-en="Turn your voice into text on the spot, then break it down into syllables for easy reading." data-pt="Transforma a tua voz em texto na hora e divide-o em sílabas para uma leitura fácil."></small></span>
+        <span class="pill"><span data-en="Save & Share" data-pt="Guardar e Partilhar"></span><small data-en="Save your syllable-split text, ready to print for study sessions or share anywhere you need." data-pt="Guarda o teu texto dividido em sílabas, pronto a imprimir para sessões de estudo ou partilhar onde precisares."></small></span>
       </div>
       <a href="#" class="play-btn">
         <svg viewBox="0 0 24 24" fill="none"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15C4.34 1.9 4.93 1.97 5.35 2.35L21.04 11.35C21.39 11.58 21.6 11.97 21.6 12.4C21.6 12.83 21.39 13.22 21.04 13.45L5.35 22.45C4.93 22.83 4.34 22.9 3.84 22.65C3.34 22.41 3 21.89 3 21.3V20.5Z" fill="#2E5E8B"/></svg>
-        Get it on Google Play
+        <span data-en="Get it on Google Play" data-pt="Disponível no Google Play"></span>
       </a>
-      <p class="coming-note">Coming soon</p>
+      <p class="coming-note" data-en="Coming soon" data-pt="Em breve"></p>
     </div>
   </div>
 
   <!-- Contact -->
   <div class="contact">
-    <h2>Contact</h2>
-    <p>Questions, feedback, or just want to say hi?</p>
+    <h2 data-en="Contact" data-pt="Contacto"></h2>
+    <p data-en="Questions, feedback, or just want to say hi?" data-pt="Dúvidas, sugestões, ou só queres dizer olá?"></p>
     <p class="email"><a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a></p>
   </div>
 
   <!-- Footer -->
   <div class="footer">
     <div class="footer-links">
-      <a onclick="openModal('privacy')">Privacy Policy</a>
-      <a onclick="openModal('terms')">Terms of Service</a>
-      <a href="mailto:info@dizzy-app.com">Contact</a>
+      <a onclick="openModal('privacy')" data-en="Privacy Policy" data-pt="Política de Privacidade"></a>
+      <a onclick="openModal('terms')" data-en="Terms of Service" data-pt="Termos de Serviço"></a>
+      <a href="mailto:info@dizzy-app.com" data-en="Contact" data-pt="Contacto"></a>
     </div>
-    &copy; 2026 Dizzy. All rights reserved.
+    &copy; 2026 Dizzy. <span data-en="All rights reserved." data-pt="Todos os direitos reservados."></span>
   </div>
 
   <!-- Privacy Policy Modal -->
@@ -237,10 +270,10 @@
       <p>Dizzy is operated by Frederico, an individual developer based in Portugal. For any questions about this policy, contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>.</p>
 
       <h3>2. What Data We Collect</h3>
-      <p><strong>Account Information:</strong> When you create an account, we collect your email address, display name, and password. If you sign in with Google, we receive your name, email, and profile photo from Google.</p>
+      <p><strong>Account Information:</strong> When you create an account, we collect your email address, display name, and password. If you sign in with Google, we receive your name, email, and profile photo from Google. We also collect your age group (under 13, 13-17, or 18+) and, for users aged 13-17, a record of parental consent with a timestamp.</p>
       <p><strong>Preferences and Settings:</strong> We store your app settings locally on your device and sync them to our servers when you are logged in.</p>
       <p><strong>User Content:</strong> We store the text you enter into the app and any text extracted from images or files you import. Images you download or save are stored only on your device.</p>
-      <p><strong>Usage Data:</strong> We collect information about how you use the app, including session duration, features used, and basic device information such as your Android version and screen size.</p>
+      <p><strong>Usage Data:</strong> We collect information about how you use the app, including features used and daily usage counts (scans and microphone minutes). For users aged 18+, we also collect basic device information such as Android version and screen size through Firebase Analytics. For users aged 13-17, analytics data is collected without advertising identifiers. For users under 13 or without an account, analytics is collected in aggregate only with no device or personal identifiers.</p>
       <p><strong>Subscription Data:</strong> If you subscribe to a paid plan, Google Play Billing handles all payment processing. We never have access to your credit card or bank details.</p>
       <p><strong>AI-Processed Data:</strong> When you use optional AI features (image text extraction, speech-to-text) while online, your data is sent through our servers to OpenAI for processing. This data is not stored after the result is returned.</p>
 
@@ -269,6 +302,7 @@
         <li><strong>Contract:</strong> Processing necessary to provide you with the app and its features.</li>
         <li><strong>Legitimate interest:</strong> Analytics and usage data to improve the app experience.</li>
         <li><strong>Consent:</strong> AI-powered features that send data to third-party services.</li>
+        <li><strong>Parental consent (Article 8):</strong> For users aged 13-17, data processing is based on parental or guardian consent provided during registration.</li>
       </ul>
 
       <h3>6. Third-Party Services</h3>
@@ -295,8 +329,12 @@
       <h3>9. Your Rights</h3>
       <p>Under the GDPR, you have the right to access, correct, delete, port, restrict, or object to the processing of your personal data. Contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>. We will respond within 30 days.</p>
 
-      <h3>10. Children's Privacy</h3>
-      <p>Dizzy is designed as a learning tool and may be used by children. We do not knowingly collect personal data from children under 16 without parental consent. If you believe your child has provided personal data without consent, please contact us.</p>
+      <h3>10. Children's Privacy (COPPA & GDPR)</h3>
+      <p>Dizzy is an educational learning tool designed to help with reading and syllable splitting. We take children's privacy seriously and comply with the Children's Online Privacy Protection Act (COPPA) and the EU General Data Protection Regulation (GDPR) Article 8.</p>
+      <p><strong>Users under 13:</strong> Children under 13 cannot create an account. They may use the app without an account. In this mode, no personal data is collected, no device identifiers are stored, and analytics data is collected only in aggregate form.</p>
+      <p><strong>Users aged 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. We store a record of this consent and its date. For these users, analytics data is collected without advertising identifiers.</p>
+      <p><strong>Users aged 18+:</strong> Adult users may create an account by accepting the Terms of Service and Privacy Policy. Standard data collection and analytics apply.</p>
+      <p>If you believe a child has provided personal data without appropriate consent, please contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>.</p>
 
       <h3>11. Changes to This Policy</h3>
       <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or via email.</p>
@@ -316,8 +354,11 @@
       <h3>2. Description of Service</h3>
       <p>Dizzy is a multilingual syllable-splitting learning app for Android. The App allows users to enter or import text, split it into syllables, customise the visual presentation, download images, and use guided reading features. Some features use AI-powered services.</p>
 
-      <h3>3. Account Registration</h3>
-      <p>You may create an account using email and password, or by signing in with Google. You are responsible for keeping your credentials secure. You must be at least 16 years old, or have parental consent if younger.</p>
+      <h3>3. Account Registration and Age Requirements</h3>
+      <p>You may create an account using email and password, or by signing in with Google. You are responsible for keeping your credentials secure.</p>
+      <p><strong>Under 13:</strong> Users under 13 cannot create an account. They may use the app without an account with limited features.</p>
+      <p><strong>Ages 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. During registration, the user must confirm that a parent or legal guardian has reviewed and approved the use of the app.</p>
+      <p><strong>Ages 18+:</strong> Users aged 18 and over may create an account by accepting these Terms and the Privacy Policy.</p>
 
       <h3>4. Free and Paid Plans</h3>
       <p>The free plan provides access to core features with daily usage limits. Paid plans significantly increase usage limits and are available as monthly or annual subscriptions through Google Play Billing. Subscriptions automatically renew unless cancelled at least 24 hours before the renewal date. Refunds are handled by Google Play.</p>
@@ -349,6 +390,33 @@
   </div>
 
   <script>
+    // Language switching
+    var currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+
+      // Update all elements with data-en/data-pt attributes
+      document.querySelectorAll('[data-en]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+
+    }
+
+    // Detect language from browser
+    (function() {
+      var browserLang = (navigator.language || '').toLowerCase();
+      if (browserLang.startsWith('pt')) {
+        setLang('pt');
+      } else {
+        setLang('en');
+      }
+    })();
+
+    // Modal functions
     function openModal(type) {
       document.getElementById(type + '-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
