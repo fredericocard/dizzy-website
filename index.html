@@ -100,20 +100,6 @@
       padding: 56px 0 48px;
       position: relative;
     }
-    .gallery-section h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 8px;
-    }
-    .gallery-section .gallery-sub {
-      text-align: center;
-      font-size: 15px;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 28px;
-      font-weight: 600;
-    }
     .gallery-wrap {
       position: relative;
       max-width: 820px;
@@ -268,7 +254,6 @@
       .gallery-arrow.right { right: 4px; }
       .gallery-card img { height: 240px; }
       .gallery-card.active img { height: 300px; }
-      .gallery-section h2 { font-size: 22px; }
       .gallery-desc { height: 90px; }
       .gallery-desc p { font-size: 12px; max-width: 180px; }
     }
@@ -386,8 +371,6 @@
 
   <!-- Screenshot Gallery -->
   <div class="gallery-section">
-    <h2 data-en="See Dizzy in Action" data-pt="Vê o Dizzy em Ação"></h2>
-    <p class="gallery-sub" data-en="Scroll through to explore the app" data-pt="Desliza para explorar a aplicação"></p>
     <div class="gallery-wrap">
       <button class="gallery-arrow left" onclick="galleryPrev()">&#8249;</button>
       <div class="gallery-viewport">
@@ -713,13 +696,11 @@
       });
     })();
 
-    // Scroll wheel on gallery — only intercept horizontal scroll
+    // Scroll wheel on gallery
     document.querySelector('.gallery-viewport').addEventListener('wheel', function(e) {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        e.preventDefault();
-        if (e.deltaX > 0) galleryNext();
-        else galleryPrev();
-      }
+      e.preventDefault();
+      if (e.deltaY > 0 || e.deltaX > 0) galleryNext();
+      else galleryPrev();
     }, { passive: false });
   </script>
 
