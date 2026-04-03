@@ -161,15 +161,20 @@
     /* Description under carousel */
     .gallery-desc {
       text-align: center;
-      min-height: 48px;
-      padding: 16px 20px 0;
+      height: 100px;
+      padding: 14px 0 0;
+      display: flex;
+      justify-content: center;
     }
     .gallery-desc p {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
+      line-height: 1.55;
       color: rgba(255,255,255,0.85);
       transition: opacity 0.3s ease;
       margin: 0;
+      width: 33.333%;
+      max-width: 240px;
     }
     /* Arrow buttons */
     .gallery-arrow {
@@ -264,7 +269,8 @@
       .gallery-card img { height: 240px; }
       .gallery-card.active img { height: 300px; }
       .gallery-section h2 { font-size: 22px; }
-      .gallery-desc p { font-size: 13px; }
+      .gallery-desc { height: 90px; }
+      .gallery-desc p { font-size: 12px; max-width: 180px; }
     }
 
     /* ── Contact section ── */
