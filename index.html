@@ -124,8 +124,7 @@
     /* ── Screenshot Gallery ── */
     .gallery-section {
       background: linear-gradient(180deg, #1a3d5c 0%, #2E5E8B 100%);
-      padding: 56px 0 64px;
-      overflow: hidden;
+      padding: 56px 0 48px;
       position: relative;
     }
     .gallery-section h2 {
@@ -139,59 +138,65 @@
       text-align: center;
       font-size: 15px;
       color: rgba(255,255,255,0.65);
-      margin-bottom: 36px;
+      margin-bottom: 28px;
       font-weight: 600;
     }
     .gallery-wrap {
       position: relative;
-      max-width: 900px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0 60px;
+      padding: 0 56px;
     }
     .gallery-viewport {
       overflow: hidden;
-      position: relative;
+      height: 440px;
     }
     .gallery-track {
       display: flex;
-      transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
       align-items: center;
-      justify-content: center;
-      gap: 0;
-      padding: 30px 0;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
     .gallery-card {
       flex-shrink: 0;
       width: 33.333%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 10px;
-      transition: transform 0.4s ease, opacity 0.4s ease;
+      padding: 0 12px;
     }
     .gallery-card img {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
       display: block;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      transition: transform 0.35s ease, box-shadow 0.35s ease, max-width 0.4s ease;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
       cursor: pointer;
+      height: 320px;
+      width: auto;
+      opacity: 0.5;
     }
     .gallery-card.active img {
-      max-width: 240px;
+      height: 400px;
       box-shadow: 0 16px 50px rgba(0,0,0,0.5);
-    }
-    .gallery-card:not(.active) {
-      opacity: 0.6;
-    }
-    .gallery-card:not(.active) img {
-      max-width: 170px;
+      opacity: 1;
     }
     .gallery-card img:hover {
-      transform: scale(1.06);
-      box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+      transform: scale(1.04);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+    }
+    /* Description under carousel */
+    .gallery-desc {
+      text-align: center;
+      min-height: 48px;
+      padding: 16px 20px 0;
+    }
+    .gallery-desc p {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      transition: opacity 0.3s ease;
+      margin: 0;
     }
     /* Arrow buttons */
     .gallery-arrow {
@@ -203,9 +208,9 @@
       height: 44px;
       border-radius: 50%;
       border: none;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
       color: white;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -214,23 +219,23 @@
       backdrop-filter: blur(6px);
     }
     .gallery-arrow:hover {
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.28);
       transform: translateY(-50%) scale(1.1);
     }
-    .gallery-arrow.left { left: 6px; }
-    .gallery-arrow.right { right: 6px; }
+    .gallery-arrow.left { left: 4px; }
+    .gallery-arrow.right { right: 4px; }
     /* Dots */
     .gallery-dots {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-top: 24px;
+      margin-top: 18px;
     }
     .gallery-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.25);
       border: none;
       cursor: pointer;
       transition: background 0.3s, transform 0.3s;
@@ -278,14 +283,15 @@
     .lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
     @media (max-width: 600px) {
-      .gallery-wrap { padding: 0 44px; }
-      .gallery-arrow { width: 36px; height: 36px; font-size: 16px; }
+      .gallery-wrap { padding: 0 42px; }
+      .gallery-viewport { height: 340px; }
+      .gallery-arrow { width: 34px; height: 34px; font-size: 16px; }
       .gallery-arrow.left { left: 4px; }
       .gallery-arrow.right { right: 4px; }
-      .gallery-card img { max-width: 160px; }
-      .gallery-card.active img { max-width: 190px; }
-      .gallery-card:not(.active) img { max-width: 130px; }
+      .gallery-card img { height: 240px; }
+      .gallery-card.active img { height: 300px; }
       .gallery-section h2 { font-size: 22px; }
+      .gallery-desc p { font-size: 13px; }
     }
 
     /* ── Contact section ── */
@@ -417,15 +423,16 @@
       <button class="gallery-arrow left" onclick="galleryPrev()">&#8249;</button>
       <div class="gallery-viewport">
         <div class="gallery-track" id="gallery-track">
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
-          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
+          <div class="gallery-card" data-desc-en="Text for image 1" data-desc-pt="Texto para imagem 1" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
+          <div class="gallery-card" data-desc-en="Text for image 2" data-desc-pt="Texto para imagem 2" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
+          <div class="gallery-card" data-desc-en="Text for image 3" data-desc-pt="Texto para imagem 3" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
+          <div class="gallery-card" data-desc-en="Text for image 4" data-desc-pt="Texto para imagem 4" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
+          <div class="gallery-card" data-desc-en="Text for image 5" data-desc-pt="Texto para imagem 5" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
+          <div class="gallery-card" data-desc-en="Text for image 6" data-desc-pt="Texto para imagem 6" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
         </div>
       </div>
       <button class="gallery-arrow right" onclick="galleryNext()">&#8250;</button>
+      <div class="gallery-desc" id="gallery-desc"><p></p></div>
       <div class="gallery-dots" id="gallery-dots"></div>
     </div>
   </div>
@@ -602,6 +609,13 @@
       document.querySelectorAll('.gallery-img').forEach(function(img) {
         img.src = img.getAttribute('data-' + lang);
       });
+
+      // Update gallery description for active card
+      var activeCard = document.querySelector('.gallery-card.active');
+      if (activeCard) {
+        var descEl = document.querySelector('#gallery-desc p');
+        if (descEl) descEl.textContent = activeCard.getAttribute('data-desc-' + lang) || '';
+      }
     }
 
     // Detect language from browser
@@ -648,37 +662,57 @@
       document.body.style.overflow = '';
     }
 
-    // Carousel
-    var galleryIndex = 0;
+    // Carousel — shows 3 images, center is active
+    var galleryIndex = 1; // start with 2nd image centered
     var galleryCards = document.querySelectorAll('.gallery-card');
     var galleryTotal = galleryCards.length;
+    var galleryThrottle = false;
 
     function galleryGo(idx) {
-      // Wrap around
       if (idx < 0) idx = galleryTotal - 1;
       if (idx >= galleryTotal) idx = 0;
       galleryIndex = idx;
 
       var track = document.getElementById('gallery-track');
-      // Each card is 33.333% of the viewport. To center card[idx], shift by (idx - 1) cards.
+      // Shift so that card[idx] sits in the center (2nd of 3 visible slots)
       var offset = (idx - 1) * 33.333;
       track.style.transform = 'translateX(' + (-offset) + '%)';
 
-      // Update active states
+      // Active state
       galleryCards.forEach(function(c, i) {
         c.classList.toggle('active', i === idx);
       });
 
-      // Update dots
+      // Dots
       document.querySelectorAll('.gallery-dot').forEach(function(d, i) {
         d.classList.toggle('active', i === idx);
       });
+
+      // Description — only for active image
+      var activeCard = galleryCards[idx];
+      var descEl = document.querySelector('#gallery-desc p');
+      var descText = activeCard.getAttribute('data-desc-' + currentLang) || '';
+      descEl.style.opacity = '0';
+      setTimeout(function() {
+        descEl.textContent = descText;
+        descEl.style.opacity = '1';
+      }, 150);
     }
 
-    function galleryNext() { galleryGo(galleryIndex + 1); }
-    function galleryPrev() { galleryGo(galleryIndex - 1); }
+    function galleryNext() {
+      if (galleryThrottle) return;
+      galleryThrottle = true;
+      galleryGo(galleryIndex + 1);
+      setTimeout(function() { galleryThrottle = false; }, 480);
+    }
+    function galleryPrev() {
+      if (galleryThrottle) return;
+      galleryThrottle = true;
+      galleryGo(galleryIndex - 1);
+      setTimeout(function() { galleryThrottle = false; }, 480);
+    }
 
-    // Build dots
+    // Build dots & init
     (function() {
       var dotsEl = document.getElementById('gallery-dots');
       for (var i = 0; i < galleryTotal; i++) {
@@ -688,25 +722,21 @@
         dot.onclick = function() { galleryGo(parseInt(this.getAttribute('data-idx'))); };
         dotsEl.appendChild(dot);
       }
-      // Start at first image
-      galleryGo(0);
+      galleryGo(1); // start with image 2 centered
     })();
 
-    // Swipe support for mobile
+    // Swipe support
     (function() {
-      var track = document.getElementById('gallery-track');
-      var startX = 0, startY = 0, moved = false;
-      track.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        moved = false;
+      var vp = document.querySelector('.gallery-viewport');
+      var startX = 0, moved = false;
+      vp.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX; moved = false;
       }, { passive: true });
-      track.addEventListener('touchmove', function(e) {
+      vp.addEventListener('touchmove', function(e) {
         var dx = e.touches[0].clientX - startX;
-        var dy = e.touches[0].clientY - startY;
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 20) moved = true;
+        if (Math.abs(dx) > 25) moved = true;
       }, { passive: true });
-      track.addEventListener('touchend', function(e) {
+      vp.addEventListener('touchend', function(e) {
         if (!moved) return;
         var dx = e.changedTouches[0].clientX - startX;
         if (dx < -40) galleryNext();
@@ -714,17 +744,11 @@
       });
     })();
 
-    // Mouse wheel horizontal scroll on gallery
+    // Scroll wheel on gallery
     document.querySelector('.gallery-viewport').addEventListener('wheel', function(e) {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        e.preventDefault();
-        if (e.deltaX > 20) galleryNext();
-        else if (e.deltaX < -20) galleryPrev();
-      } else if (Math.abs(e.deltaY) > 20) {
-        e.preventDefault();
-        if (e.deltaY > 0) galleryNext();
-        else galleryPrev();
-      }
+      e.preventDefault();
+      if (e.deltaY > 0 || e.deltaX > 0) galleryNext();
+      else galleryPrev();
     }, { passive: false });
   </script>
 
