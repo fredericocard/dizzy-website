@@ -144,56 +144,101 @@
     }
     .gallery-wrap {
       position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 60px;
     }
-    .gallery-wrap::before,
-    .gallery-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .gallery-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #2E5E8B, transparent);
-    }
-    .gallery-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #2E5E8B, transparent);
+    .gallery-viewport {
+      overflow: hidden;
+      position: relative;
     }
     .gallery-track {
       display: flex;
-      gap: 24px;
-      padding: 20px 60px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
+      transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 30px 0;
     }
-    .gallery-track:active { cursor: grabbing; }
-    .gallery-track::-webkit-scrollbar { display: none; }
     .gallery-card {
       flex-shrink: 0;
-      width: 200px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      scroll-snap-align: center;
-      background: #1a3d5c;
+      width: 33.333%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
     .gallery-card img {
       width: 100%;
+      max-width: 200px;
       height: auto;
       display: block;
-      pointer-events: none;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, max-width 0.4s ease;
+      cursor: pointer;
     }
-    .gallery-card:hover {
-      transform: scale(1.12);
+    .gallery-card.active img {
+      max-width: 240px;
       box-shadow: 0 16px 50px rgba(0,0,0,0.5);
-      z-index: 3;
+    }
+    .gallery-card:not(.active) {
+      opacity: 0.6;
+    }
+    .gallery-card:not(.active) img {
+      max-width: 170px;
+    }
+    .gallery-card img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+    }
+    /* Arrow buttons */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .gallery-arrow:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .gallery-arrow.left { left: 6px; }
+    .gallery-arrow.right { right: 6px; }
+    /* Dots */
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .gallery-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+    .gallery-dot.active {
+      background: rgba(255,255,255,0.9);
+      transform: scale(1.3);
     }
     /* Lightbox */
     .lightbox {
@@ -233,11 +278,14 @@
     .lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
     @media (max-width: 600px) {
-      .gallery-card { width: 160px; }
-      .gallery-track { gap: 16px; padding: 16px 32px; }
-      .gallery-wrap::before, .gallery-wrap::after { width: 40px; }
+      .gallery-wrap { padding: 0 44px; }
+      .gallery-arrow { width: 36px; height: 36px; font-size: 16px; }
+      .gallery-arrow.left { left: 4px; }
+      .gallery-arrow.right { right: 4px; }
+      .gallery-card img { max-width: 160px; }
+      .gallery-card.active img { max-width: 190px; }
+      .gallery-card:not(.active) img { max-width: 130px; }
       .gallery-section h2 { font-size: 22px; }
-      .gallery-card:hover { transform: scale(1.05); }
     }
 
     /* ── Contact section ── */
@@ -366,14 +414,19 @@
     <h2 data-en="See Dizzy in Action" data-pt="Vê o Dizzy em Ação"></h2>
     <p class="gallery-sub" data-en="Scroll through to explore the app" data-pt="Desliza para explorar a aplicação"></p>
     <div class="gallery-wrap">
-      <div class="gallery-track" id="gallery-track">
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
-        <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
+      <button class="gallery-arrow left" onclick="galleryPrev()">&#8249;</button>
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="gallery-track">
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-1-en.jpg" data-pt="gallery/ss-1-pt.jpg" alt="Screenshot 1"></div>
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-2-en.jpg" data-pt="gallery/ss-2-pt.jpg" alt="Screenshot 2"></div>
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-3-en.jpg" data-pt="gallery/ss-3-pt.jpg" alt="Screenshot 3"></div>
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-4-en.jpg" data-pt="gallery/ss-4-pt.jpg" alt="Screenshot 4"></div>
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-5-en.jpg" data-pt="gallery/ss-5-pt.jpg" alt="Screenshot 5"></div>
+          <div class="gallery-card" onclick="openLightbox(this)"><img class="gallery-img" data-en="gallery/ss-6-en.jpg" data-pt="gallery/ss-6-pt.jpg" alt="Screenshot 6"></div>
+        </div>
       </div>
+      <button class="gallery-arrow right" onclick="galleryNext()">&#8250;</button>
+      <div class="gallery-dots" id="gallery-dots"></div>
     </div>
   </div>
 
@@ -595,32 +648,84 @@
       document.body.style.overflow = '';
     }
 
-    // Drag to scroll gallery
+    // Carousel
+    var galleryIndex = 0;
+    var galleryCards = document.querySelectorAll('.gallery-card');
+    var galleryTotal = galleryCards.length;
+
+    function galleryGo(idx) {
+      // Wrap around
+      if (idx < 0) idx = galleryTotal - 1;
+      if (idx >= galleryTotal) idx = 0;
+      galleryIndex = idx;
+
+      var track = document.getElementById('gallery-track');
+      // Each card is 33.333% of the viewport. To center card[idx], shift by (idx - 1) cards.
+      var offset = (idx - 1) * 33.333;
+      track.style.transform = 'translateX(' + (-offset) + '%)';
+
+      // Update active states
+      galleryCards.forEach(function(c, i) {
+        c.classList.toggle('active', i === idx);
+      });
+
+      // Update dots
+      document.querySelectorAll('.gallery-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    function galleryNext() { galleryGo(galleryIndex + 1); }
+    function galleryPrev() { galleryGo(galleryIndex - 1); }
+
+    // Build dots
+    (function() {
+      var dotsEl = document.getElementById('gallery-dots');
+      for (var i = 0; i < galleryTotal; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'gallery-dot';
+        dot.setAttribute('data-idx', i);
+        dot.onclick = function() { galleryGo(parseInt(this.getAttribute('data-idx'))); };
+        dotsEl.appendChild(dot);
+      }
+      // Start at first image
+      galleryGo(0);
+    })();
+
+    // Swipe support for mobile
     (function() {
       var track = document.getElementById('gallery-track');
-      if (!track) return;
-      var isDown = false, startX, scrollLeft, moved;
-      track.addEventListener('mousedown', function(e) {
-        isDown = true; moved = false;
-        startX = e.pageX - track.offsetLeft;
-        scrollLeft = track.scrollLeft;
-        track.style.cursor = 'grabbing';
+      var startX = 0, startY = 0, moved = false;
+      track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        moved = false;
+      }, { passive: true });
+      track.addEventListener('touchmove', function(e) {
+        var dx = e.touches[0].clientX - startX;
+        var dy = e.touches[0].clientY - startY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 20) moved = true;
+      }, { passive: true });
+      track.addEventListener('touchend', function(e) {
+        if (!moved) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (dx < -40) galleryNext();
+        else if (dx > 40) galleryPrev();
       });
-      track.addEventListener('mouseleave', function() { isDown = false; track.style.cursor = 'grab'; });
-      track.addEventListener('mouseup', function() { isDown = false; track.style.cursor = 'grab'; });
-      track.addEventListener('mousemove', function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - track.offsetLeft;
-        var walk = (x - startX) * 1.5;
-        track.scrollLeft = scrollLeft - walk;
-        if (Math.abs(walk) > 5) moved = true;
-      });
-      // Prevent click on card if user was dragging
-      track.addEventListener('click', function(e) {
-        if (moved) { e.stopPropagation(); moved = false; }
-      }, true);
     })();
+
+    // Mouse wheel horizontal scroll on gallery
+    document.querySelector('.gallery-viewport').addEventListener('wheel', function(e) {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        if (e.deltaX > 20) galleryNext();
+        else if (e.deltaX < -20) galleryPrev();
+      } else if (Math.abs(e.deltaY) > 20) {
+        e.preventDefault();
+        if (e.deltaY > 0) galleryNext();
+        else galleryPrev();
+      }
+    }, { passive: false });
   </script>
 
 </body>
