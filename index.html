@@ -429,7 +429,7 @@
       <h3>2. What Data We Collect</h3>
       <p><strong>Account Information:</strong> When you create an account, we collect your email address, display name, and password. If you sign in with Google, we receive your name, email, and profile photo from Google. We also collect your age group (under 13, 13-17, or 18+) and, for users aged 13-17, a record of parental consent with a timestamp.</p>
       <p><strong>Preferences and Settings:</strong> We store your app settings locally on your device and sync them to our servers when you are logged in.</p>
-      <p><strong>User Content:</strong> We store the text you enter into the app and any text extracted from images or files you import. Images you download or save are stored only on your device.</p>
+      <p><strong>User Content:</strong> The text you enter into the app and any text extracted from images or speech is processed in memory and is not stored on our servers or persisted on your device. Images you download or save are stored only on your device.</p>
       <p><strong>Usage Data:</strong> We collect information about how you use the app, including features used and daily usage counts (scans and microphone minutes). For users aged 18+, we also collect basic device information such as Android version and screen size through Firebase Analytics. For users aged 13-17, analytics data is collected without advertising identifiers. For users under 13 or without an account, analytics is collected in aggregate only with no device or personal identifiers.</p>
       <p><strong>Subscription Data:</strong> If you subscribe to a paid plan, Google Play Billing handles all payment processing. We never have access to your credit card or bank details.</p>
       <p><strong>AI-Processed Data:</strong> When you use optional AI features (image text extraction, speech-to-text) while online, your data is sent through our servers to OpenAI for processing. This data is not stored after the result is returned.</p>
@@ -477,7 +477,7 @@
       <h3>8. Data Retention</h3>
       <ul>
         <li>Account and preference data: Retained until you delete your account.</li>
-        <li>Content history: Retained until you delete it or your account.</li>
+        <li>Style preferences: Stored locally on your device until you clear app data.</li>
         <li>Usage analytics: Retained for up to 2 months.</li>
         <li>Subscription data: Retained as required by tax regulations.</li>
         <li>AI-processed data: Not stored. Discarded immediately.</li>
@@ -488,10 +488,10 @@
 
       <h3>10. Children's Privacy (COPPA & GDPR)</h3>
       <p>Dizzy is an educational learning tool designed to help with reading and syllable splitting. We take children's privacy seriously and comply with the Children's Online Privacy Protection Act (COPPA) and the EU General Data Protection Regulation (GDPR) Article 8.</p>
-      <p><strong>Users under 13:</strong> Children under 13 cannot create an account. They may use the app without an account. In this mode, no personal data is collected, no device identifiers are stored, and analytics data is collected only in aggregate form.</p>
-      <p><strong>Users aged 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. We store a record of this consent and its date. For these users, analytics data is collected without advertising identifiers.</p>
+      <p><strong>Users under 13:</strong> Children under 13 cannot create an account. They may use the app without an account. In this mode, no personal data is collected, no device identifiers are stored, and analytics data is collected only in aggregate form (event counts without any link to an individual or device).</p>
+      <p><strong>Users aged 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. During registration, the user must confirm that a parent or legal guardian has reviewed and agreed to the use of the app. We store a record of this consent and its date. For these users, analytics data is collected without advertising identifiers — ad personalization and ad-related data collection are disabled.</p>
       <p><strong>Users aged 18+:</strong> Adult users may create an account by accepting the Terms of Service and Privacy Policy. Standard data collection and analytics apply.</p>
-      <p>If you believe a child has provided personal data without appropriate consent, please contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>.</p>
+      <p>If you believe a child has provided personal data without appropriate consent, please contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a> and we will promptly delete the data.</p>
 
       <h3>11. Changes to This Policy</h3>
       <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or via email.</p>
@@ -506,43 +506,60 @@
       <p><strong>Effective date:</strong> March 2026</p>
 
       <h3>1. Acceptance of Terms</h3>
-      <p>By downloading, installing, or using Dizzy ("the App"), you agree to be bound by these Terms of Service. If you do not agree, do not use the App.</p>
+      <p>By downloading, installing, or using Dizzy ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
 
       <h3>2. Description of Service</h3>
-      <p>Dizzy is a multilingual syllable-splitting learning app for Android. The App allows users to enter or import text, split it into syllables, customise the visual presentation, download images, and use guided reading features. Some features use AI-powered services.</p>
+      <p>Dizzy is a multilingual syllable-splitting learning app for Android. The App allows users to enter or import text, split it into syllables, customise the visual presentation, download images, and use guided reading features. Some features use AI-powered services for image text extraction and speech-to-text.</p>
 
       <h3>3. Account Registration and Age Requirements</h3>
-      <p>You may create an account using email and password, or by signing in with Google. You are responsible for keeping your credentials secure.</p>
-      <p><strong>Under 13:</strong> Users under 13 cannot create an account. They may use the app without an account with limited features.</p>
-      <p><strong>Ages 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. During registration, the user must confirm that a parent or legal guardian has reviewed and approved the use of the app.</p>
+      <p>You may create an account using your email address and a password, or by signing in with Google. You are responsible for keeping your login credentials secure. You must provide accurate information when creating an account.</p>
+      <p><strong>Under 13:</strong> Users under 13 years old cannot create an account. They may use the app without an account with limited features.</p>
+      <p><strong>Ages 13-17:</strong> Users aged 13-17 may create an account with parental or guardian consent. During registration, the user must confirm that a parent or legal guardian has reviewed and approved the use of the app and these Terms.</p>
       <p><strong>Ages 18+:</strong> Users aged 18 and over may create an account by accepting these Terms and the Privacy Policy.</p>
 
       <h3>4. Free and Paid Plans</h3>
-      <p>The free plan provides access to core features with daily usage limits. Paid plans significantly increase usage limits and are available as monthly or annual subscriptions through Google Play Billing. Subscriptions automatically renew unless cancelled at least 24 hours before the renewal date. Refunds are handled by Google Play.</p>
+      <p><strong>4.1 Free Plan</strong> — The free plan provides access to core features with daily usage limits on the number of texts you can process.</p>
+      <p><strong>4.2 Paid Subscription</strong> — Paid plans significantly increase usage limits and are available as monthly or annual subscriptions. Subscriptions are managed through Google Play Billing.</p>
+      <p><strong>4.3 Billing and Renewal</strong> — Subscriptions automatically renew at the end of each billing period unless cancelled at least 24 hours before the renewal date. You can manage or cancel your subscription through Google Play Store settings on your device.</p>
+      <p><strong>4.4 Refunds</strong> — Refund requests are handled by Google Play in accordance with their refund policies. We do not process refunds directly.</p>
 
       <h3>5. Acceptable Use</h3>
-      <p>You agree not to use the App for unlawful purposes, attempt to access non-public areas, interfere with infrastructure, use automated scrapers, reverse engineer the App, share account credentials, or abuse AI features.</p>
+      <p>When using Dizzy, you agree not to:</p>
+      <ul>
+        <li>Use the App for any unlawful purpose or in violation of any applicable laws.</li>
+        <li>Attempt to access, tamper with, or use non-public areas of the App or our servers.</li>
+        <li>Interfere with or disrupt the App or its infrastructure.</li>
+        <li>Use automated tools, bots, or scrapers to access the App.</li>
+        <li>Reverse engineer, decompile, or disassemble any part of the App.</li>
+        <li>Share your account credentials with others or allow others to use your account.</li>
+        <li>Abuse the AI-powered features by submitting harmful, illegal, or offensive content.</li>
+      </ul>
 
       <h3>6. Intellectual Property</h3>
-      <p>All content, design, code, and features of the App are owned by Frederico and protected by intellectual property laws. You retain ownership of text you enter. You grant us a limited license to process your content solely for providing the service.</p>
+      <p>All content, design, code, and features of the App are owned by the developer and are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works from the App without written permission.</p>
+      <p>You retain ownership of any text content you enter into the App. By using the App, you grant us a limited license to process and store your content solely for the purpose of providing the service.</p>
 
       <h3>7. AI-Powered Features</h3>
-      <p>Dizzy uses AI services (provided by OpenAI) for optional features. Data is sent through our servers to OpenAI for processing and is not stored after the result is returned. These features are provided "as is."</p>
+      <p>Dizzy uses AI services for optional image text extraction and speech-to-text features. When you use these features online, your image or audio is sent through our servers for processing. We do not store this data after the result is returned. These features are provided "as is" and we do not guarantee the accuracy of AI-generated results.</p>
 
       <h3>8. Availability and Updates</h3>
-      <p>We aim to keep the App available at all times but do not guarantee uninterrupted access. We may release updates that change, add, or remove features.</p>
+      <p>We aim to keep the App available at all times, but we do not guarantee uninterrupted access. The App may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We may release updates that change, add, or remove features.</p>
 
       <h3>9. Limitation of Liability</h3>
-      <p>The App is provided "as is" without warranties. To the maximum extent permitted by law, we are not liable for indirect, incidental, special, or consequential damages. Our total liability shall not exceed the amount you paid in the 12 months preceding the claim.</p>
+      <p>The App is provided "as is" without warranties of any kind, whether express or implied. To the maximum extent permitted by law, we are not liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including but not limited to loss of data, loss of profits, or inaccurate syllable splitting results.</p>
+      <p>Our total liability for any claims related to the App shall not exceed the amount you paid for the App in the 12 months preceding the claim.</p>
 
       <h3>10. Termination</h3>
-      <p>We may suspend or terminate your account if you violate these Terms. You may delete your account at any time.</p>
+      <p>We may suspend or terminate your account if you violate these Terms. You may delete your account at any time through the App settings or by contacting us. Upon termination, your right to use the App ceases immediately. We will delete your data in accordance with our Privacy Policy.</p>
 
       <h3>11. Governing Law</h3>
-      <p>These Terms are governed by the laws of Portugal and the European Union. Disputes shall be subject to the courts of Portugal, without prejudice to your rights under EU consumer protection laws.</p>
+      <p>These Terms are governed by the laws of Portugal and the European Union. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of Portugal, without prejudice to your rights under EU consumer protection laws.</p>
 
       <h3>12. Changes to These Terms</h3>
-      <p>We may update these Terms from time to time. Continued use after changes constitutes acceptance.</p>
+      <p>We may update these Terms from time to time. We will notify you of significant changes through the App or via email. Continued use of the App after changes are posted constitutes acceptance of the updated Terms.</p>
+
+      <h3>13. Contact</h3>
+      <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@dizzy-app.com">info@dizzy-app.com</a>.</p>
     </div>
   </div>
 
